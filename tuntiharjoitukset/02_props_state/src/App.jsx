@@ -8,14 +8,14 @@ import SummaryCard from './components/SummaryCard.jsx'
 const initialTopics = [
   {
     id: 1,
-    title: 'React basics',
+    title: 'React basics!',
     level: 'Beginner',
     description: 'JSX, components, and the one-way flow of data.',
     votes: 0,
   },
   {
     id: 2,
-    title: 'Working with props',
+    title: 'Working with props!',
     level: 'Beginner',
     description: 'Passing data and event handlers from parent to child.',
     votes: 0,

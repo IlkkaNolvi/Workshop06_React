@@ -2,12 +2,6 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import PostForm from '../components/PostForm.jsx'
 
-// TODO (student): Implement edit flow.
-// Suggested steps:
-// 1) Fetch existing post with GET /api/posts/:id.
-// 2) Pass fetched data to PostForm as initialData.
-// 3) On submit, send PUT /api/posts/:id.
-// 4) Navigate back to /posts/:id after successful save.
 function EditPostPage() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -18,8 +12,22 @@ function EditPostPage() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    // TODO (student): Replace this placeholder with GET /api/posts/:id fetch logic.
-    setLoading(false)
+    const fetchPost = async () => {
+      try {
+        const response = await fetch(`/api/posts/${id}`)
+        if (!response.ok) {
+          throw new Error('Failed to fetch post')
+        }
+        const postData = await response.json()
+        setPost(postData)
+      } catch (error) {
+        setError(error.message)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchPost()
   }, [id])
 
   async function handleSubmit(e) {
@@ -27,9 +35,28 @@ function EditPostPage() {
     setSubmitting(true)
     setError(null)
 
-    // TODO (student): Implement PUT /api/posts/:id.
-    setError('TODO: implement PUT /api/posts/:id in EditPostPage')
-    setSubmitting(false)
+    try {
+      const formData = new FormData(e.target)
+      const updatedPostData = Object.fromEntries(formData)
+
+      const response = await fetch(`/api/posts/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedPostData),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to update post')
+      }
+
+      navigate(`/posts/${id}`)
+    } catch (error) {
+      setError(error.message)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (loading) return <p className="status-msg">Loading…</p>
