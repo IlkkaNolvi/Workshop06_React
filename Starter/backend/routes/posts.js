@@ -71,13 +71,6 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-  // TODO (student): Implement DELETE operation for one post.
-  // Suggested steps:
-  // 1) Keep ObjectId validation for req.params.id.
-  // 2) Delete the post using Post.findByIdAndDelete().
-  // 3) Return 404 if no post exists with this id.
-  // 4) Return a success JSON message when deletion succeeds.
-  // 5) Return 500 for unexpected server errors.
   if (!isValidObjectId(req.params.id)) {
     return res.status(400).json({ error: 'Invalid post id' });
   }

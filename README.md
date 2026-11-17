@@ -1,81 +1,41 @@
-# WS06 React
+# Full Stack MERN Blog (WS06)
 
-This repository contains a student starter package and a complete reference solution for the WS06 React + REST API workshop.
+This repository contains a fully functional Full-Stack MERN (MongoDB, Express, React, Node.js) blog application. It was originally built as part of the WS06 React + REST API workshop.
 
-## Current Structure
+## Features
+
+- **REST API:** Node.js & Express backend providing complete CRUD operations.
+- **Database:** MongoDB integration with strict Mongoose schema validation.
+- **Frontend:** React SPA (Single Page Application) built with Vite and React Router.
+- **Proxy Routing:** Seamless frontend-to-backend communication via Vite proxy.
+
+## Project Structure
 
 ```text
 WS06_React/
+├─ Starter/         # The completed working application
+│  ├─ backend/      # Express API & MongoDB models
+│  └─ frontend/     # React UI components & pages
 ├─ README.md
-├─ requirements.md
-├─ Starter/
-│  ├─ backend/
-│  │  ├─ .env.example
-│  │  ├─ README.md
-│  │  ├─ package.json
-│  │  ├─ models/
-│  │  └─ routes/
-│  └─ frontend/
-│     ├─ README.md
-│     ├─ package.json
-│     ├─ vite.config.js
-│     └─ src/
-├─ solution/
-│  ├─ backend/
-│  │  ├─ README.md
-│  │  ├─ package.json
-│  │  ├─ server.js
-│  │  ├─ models/
-│  │  └─ routes/
-│  └─ frontend/
-│     ├─ README.md
-│     ├─ package.json
-│     ├─ vite.config.js
-│     └─ src/
-└─ tuntiharjoitukset/
+└─ requirements.md
 ```
 
-## Folder Purpose
-
-- `Starter/`
-  - Student workspace with TODOs and guided tasks.
-  - Students should implement missing backend and frontend features here.
-
-- `solution/`
-  - Teacher/reference implementation.
-  - Use this to compare behavior or review complete code.
-
-- `tuntiharjoitukset/`
-  - Additional class exercises kept for course support.
-
-## Recommended Workflow
-
-1. Build and test in `Starter/backend`.
-2. Build and test in `Starter/frontend`.
-3. Compare with `solution/` only when needed.
-
 ## Run Instructions
+You will need two separate terminal windows to run the frontend and backend simultaneously.
 
-### Backend starter
-
-```bash
+1. Start the Backend
 cd Starter/backend
 npm install
 cp .env.example .env
+
+Note: Ensure you add your MongoDB connection string (MONGODB_URI) to the newly created .env file before starting the server.
+
 npm run dev
-```
 
-### Frontend starter
-
-```bash
+2. Start the Frontend
+Open a new terminal window:
 cd Starter/frontend
 npm install
 npm run dev
-```
 
-The frontend uses `/api/posts` and expects the backend to run on `http://localhost:3000`.
-
-## Notes
-
-- Keep student implementation work inside `Starter/`.
-- Keep `solution/` unchanged as the reference baseline.
+Vite will start the development server (usually on http://localhost:5173). The frontend is configured to automatically proxy API requests (/api/posts) to the backend.
