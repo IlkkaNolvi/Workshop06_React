@@ -21,21 +21,27 @@ WS06_React/
 ```
 
 ## Run Instructions
+
 You will need two separate terminal windows to run the frontend and backend simultaneously.
 
-1. Start the Backend
+### 1. Start the Backend
+
+Open your first terminal and run:
+
+```bash
 cd Starter/backend
 npm install
 cp .env.example .env
-
+```
 Note: Ensure you add your MongoDB connection string (MONGODB_URI) to the newly created .env file before starting the server.
-
+```bash
 npm run dev
-
+```
 2. Start the Frontend
 Open a new terminal window:
+```bash
 cd Starter/frontend
 npm install
 npm run dev
-
+```
 Vite will start the development server (usually on http://localhost:5173). The frontend is configured to automatically proxy API requests (/api/posts) to the backend.
