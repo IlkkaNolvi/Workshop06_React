@@ -37,7 +37,7 @@ Note: Ensure you add your MongoDB connection string (MONGODB_URI) to the newly c
 ```bash
 npm run dev
 ```
-2. Start the Frontend
+### 2. Start the Frontend
 Open a new terminal window:
 ```bash
 cd Starter/frontend
